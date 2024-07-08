@@ -9,8 +9,6 @@ const adminAuth=require('../middlewares/adminAuth')
 admin_route.use(express.json())
 admin_route.use(express.urlencoded({extended:true}))
 
-admin_route.use(express.json())
-admin_route.use(express.urlencoded({extended:true}))
 admin_route.use(session({
     secret:config.sessionSecret,
     resave:true,
@@ -42,7 +40,9 @@ admin_route.post('/blog-setUp',upload.single('blog_image'),adminController.blogS
 
 admin_route.get('/dashboard',adminAuth.isLogin,adminController.dashboard);
 admin_route.get('/createpost',adminAuth.isLogin,adminController.loadCreatePost)
-admin_route.post('/createpost',adminAuth.isLogin,adminController.createPost)
+admin_route.post('/createpost',adminAuth.isLogin,adminController.createPost);
+
+admin_route.post('/upload-post-image',upload.single('image'),adminAuth.isLogin,adminController.imageUpload)
 
 
 module.exports=admin_route;

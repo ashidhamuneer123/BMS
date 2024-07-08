@@ -77,11 +77,18 @@ const loadCreatePost = async(req,res)=>{
 
 const createPost = async(req,res)=>{
     try {
+       
+        var image = ""
+        if(req.body.image !== undefined){
+            image = req.body.image
+        }
         const title=req.body.title;
         const content=req.body.content;
+        
         const createPost = new Post({
             title:title,
-            content:content
+            content:content,
+            image:image
         })
         createPost.save();
         res.render('admin/createpost',{message:'New Post Added!!!!'})
@@ -91,10 +98,23 @@ const createPost = async(req,res)=>{
 }
 
 
+const imageUpload=async (req,res)=>{
+    try {
+        var imagePath='/images';
+        imagePath = imagePath +'/'+ req.file.filename;
+        res.send({success:true , message : 'Image Uploaded',path:imagePath})
+        
+    } catch (error) {
+        res.send({success:false,message:error.messsage})
+    }
+}
+
+
 module.exports={
     blogSetUp,
     blogSetUpSave,
     dashboard,
     loadCreatePost,
-    createPost
+    createPost,
+    imageUpload
 }
