@@ -1,0 +1,44 @@
+<%- include('./layouts/header') %>
+<link href="css/clock.css" rel="stylesheet" />
+<div id="clock-container">
+    <div id="clock">00:00:00</div>
+</div>
+ <!-- Page Content-->
+ <div class="container px-4 px-lg-5">
+    <% if(posts.length > 0){ %>
+    <!-- Heading Row-->
+     <% posts.forEach((post) => {%>
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light"><%= post.title %></h1>
+                <p><%= post.content %></p>
+                <a class="btn btn-primary" href="/post/<%= post._id %>">Read More!!</a>
+            </div>
+        </div>
+    <% }); %>
+    <% }else{ %>
+        <p>Posts not available !!!!!</p>
+    <% } %>
+    
+    
+</div>
+
+<script>
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      const meridiem=hours >= 12 ? "PM" : "AM" ;
+      hours = hours % 12 || 12;
+      hours=hours.toString().padStart(2,0)
+      const minutes = now.getMinutes().toString().padStart(2,0);
+      const seconds = now.getSeconds().toString().padStart(2,0);
+      const timeString = `${hours}:${minutes}:${seconds} ${meridiem}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+  
+    updateClock(); // Call the function on page load
+    setInterval(updateClock, 1000); // Update the clock every second
+  </script>
+
+<%- include('./layouts/footer') %>

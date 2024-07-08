@@ -1,0 +1,32 @@
+<%- include('../layouts/adminHeader.ejs')%>
+
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h2 class="mb-4">Create Post</h2>
+    <div class="container">
+        <form action="" method="post">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input style="border: solid;" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                <textarea style="border:solid;" name="content" class="w-100" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <% if(typeof message != 'undefined'){%>
+            <p style="color: green;"><%=message %></p>
+        <% }  %>
+    </div>
+</div>
+
+
+
+    
+      
+
+        
+</div>
+
+
+<%- include('../layouts/adminFooter.ejs')%>

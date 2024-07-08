@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>login</title>
+  </head>
+  <body>
+
+<div class="container py-5">
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title" pb-5>
+                <h2 class="font-weight-bold">My Blog</h2>
+                
+            </div><br>
+            <% if(typeof message !== 'undefined') {
+                %>
+                    <p style="color: rgb(128, 90, 0);"><%=message %></p>
+                <%
+            }
+            %>
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" name="email" placeholder="email address" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" placeholder="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+               <a href="/forget-password">forget password?</a>
+        </div>
+    </div>
+</div>    
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
